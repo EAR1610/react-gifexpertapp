@@ -5,9 +5,7 @@ export const AddCategory = ( { setCategories } ) => {
 
     const [inputValue, setInputValue] = useState('');
     
-    const handleInputChange = ( e ) => {
-        setInputValue( e.target.value );
-    }
+    const handleInputChange = ( e ) => setInputValue( e.target.value );
 
     const handleSubmit = ( e ) => {
         e.preventDefault();
@@ -15,17 +13,20 @@ export const AddCategory = ( { setCategories } ) => {
         if( inputValue.trim().length > 2 ){
             setCategories( categories => [  inputValue, ...categories ] );
             setInputValue('');
+        } else{
+            alert('La búsqueda debe de ser mayor a 2 caractéres');
         }
     }
 
 
   return (
-    <form onSubmit={ handleSubmit } >
+    <form onSubmit = { handleSubmit } >
         <input 
             type = "text"
             value = { inputValue }
             onChange = { handleInputChange }
         />
+        <button type = 'Submit'>Buscar Gift</button>
     </form>
   )
 }
